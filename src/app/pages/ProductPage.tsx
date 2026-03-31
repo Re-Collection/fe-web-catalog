@@ -163,6 +163,13 @@ export function ProductPage() {
             )}
           </div>
 
+          {product.detail && (
+            <div className="mb-6">
+              <p className="text-xs uppercase tracking-[0.3em] text-rose-200/70 mb-2">Detalle</p>
+              <p className="text-sm text-rose-200 font-semibold">{product.detail}</p>
+            </div>
+          )}
+
           <div className="mb-8 rounded-2xl border border-white/5 bg-white/5">
             <button
               type="button"
@@ -182,9 +189,6 @@ export function ProductPage() {
             >
               {infoOpen && (
                 <div>
-                  {product.detail && (
-                    <p className="text-sm text-rose-300 font-semibold mb-3">{product.detail}</p>
-                  )}
                   <p className="text-gray-300 leading-relaxed whitespace-pre-line">
                     {product.description ||
                       'Explora cada detalle del producto, revisa la galería fotográfica y encuentra la información clave para tomar la mejor decisión.'}

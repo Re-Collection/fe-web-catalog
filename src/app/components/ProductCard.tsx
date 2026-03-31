@@ -71,6 +71,14 @@ export function ProductCard({ product, onViewDetails }: ProductCardProps) {
         </div>
       </div>
 
+      {product.detail && (
+        <div className="px-4 pt-4">
+          <p className="text-[0.7rem] uppercase tracking-[0.2em] text-pink-200/80">
+            {product.detail}
+          </p>
+        </div>
+      )}
+
       {/* Product Info */}
       <div className="p-4 space-y-2">
         <div>
@@ -89,9 +97,6 @@ export function ProductCard({ product, onViewDetails }: ProductCardProps) {
             </span>
           )}
         </div>
-        {product.detail && (
-          <p className="text-xs text-pink-200/80 line-clamp-2">{product.detail}</p>
-        )}
       </div>
 
       {/* Hover Border Effect */}
