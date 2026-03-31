@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Search, ShoppingCart, Menu, X } from 'lucide-react';
+import { Search, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface NavigationProps {
-  cartItemCount?: number;
+  categories: { id: string; label: string }[];
+  onCategorySelect: (categoryId: string) => void;
 }
 
-export function Navigation({ cartItemCount = 3 }: NavigationProps) {
+export function Navigation({ categories, onCategorySelect }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -17,8 +18,6 @@ export function Navigation({ cartItemCount = 3 }: NavigationProps) {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const categories = ['Clothing', 'Tech', 'Accessories', 'Lifestyle', 'New Arrivals'];
 
   return (
     <motion.nav
@@ -47,17 +46,18 @@ export function Navigation({ cartItemCount = 3 }: NavigationProps) {
           <div className="hidden lg:flex items-center space-x-8">
             {categories.map((category) => (
               <motion.button
-                key={category}
+                key={category.id}
                 whileHover={{ y: -2 }}
+                onClick={() => onCategorySelect(category.id)}
                 className="text-sm text-gray-300 hover:text-white transition-colors relative group"
               >
-                {category}
+                {category.label}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full" />
               </motion.button>
             ))}
           </div>
 
-          {/* Search & Cart */}
+          {/* Search */}
           <div className="flex items-center space-x-4">
             {/* Search Bar - Desktop */}
             <div className="hidden md:flex items-center bg-white/5 border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 transition-all">
@@ -76,24 +76,6 @@ export function Navigation({ cartItemCount = 3 }: NavigationProps) {
               className="md:hidden p-2 text-gray-300 hover:text-white"
             >
               <Search className="w-5 h-5" />
-            </motion.button>
-
-            {/* Cart */}
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="relative p-2 text-gray-300 hover:text-white"
-            >
-              <ShoppingCart className="w-5 h-5" />
-              {cartItemCount > 0 && (
-                <motion.span
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="absolute -top-1 -right-1 bg-white text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
-                >
-                  {cartItemCount}
-                </motion.span>
-              )}
             </motion.button>
 
             {/* Mobile Menu Toggle */}
@@ -121,13 +103,17 @@ export function Navigation({ cartItemCount = 3 }: NavigationProps) {
             <div className="px-4 py-6 space-y-4">
               {categories.map((category, index) => (
                 <motion.button
-                  key={category}
+                  key={category.id}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
+                  onClick={() => {
+                    onCategorySelect(category.id);
+                    setIsMobileMenuOpen(false);
+                  }}
                   className="block w-full text-left text-gray-300 hover:text-white py-2 transition-colors"
                 >
-                  {category}
+                  {category.label}
                 </motion.button>
               ))}
             </div>

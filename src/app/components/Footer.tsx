@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Facebook, Instagram, Twitter, Youtube, Mail } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Youtube, MessageCircle } from 'lucide-react';
 
 export function Footer() {
   const footerLinks = {
@@ -16,40 +16,32 @@ export function Footer() {
     { icon: Youtube, label: 'YouTube' },
   ];
 
+  const messengerLink = 'https://m.me/your.username';
+
   return (
     <footer className="bg-black border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Newsletter */}
+        {/* Messenger Contact */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          className="mb-12 text-center"
         >
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Stay in the Loop
-          </h3>
-          <p className="text-gray-400 mb-6">
-            Subscribe to get special offers, free giveaways, and updates
+          <p className="text-gray-400 mb-4">
+            Contáctame directamente a través de Messenger para cualquier consulta.
           </p>
-
-          <div className="max-w-md mx-auto flex gap-3">
-            <div className="flex-1 relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full bg-white/5 border border-white/10 rounded-full py-4 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-white/30 transition-colors"
-              />
-            </div>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-full font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-shadow"
-            >
-              Subscribe
-            </motion.button>
-          </div>
+          <motion.a
+            href={messengerLink}
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-medium shadow-lg shadow-blue-500/30 hover:shadow-purple-500/40 transition-shadow"
+          >
+            <MessageCircle className="w-5 h-5" />
+            Escríbeme por Messenger
+          </motion.a>
         </motion.div>
 
         {/* Links Grid */}
@@ -110,9 +102,9 @@ export function Footer() {
 
             {/* Payment Methods */}
             <div className="flex items-center gap-3">
-              <span className="text-gray-400 text-sm">We accept:</span>
+              <span className="text-gray-400 text-sm">Aceptamos:</span>
               <div className="flex gap-2">
-                {['VISA', 'MC', 'AMEX', 'PP'].map((method) => (
+                {['Yape', 'Plin', 'Efectivo'].map((method) => (
                   <div
                     key={method}
                     className="bg-white/10 px-3 py-1.5 rounded text-xs font-medium text-gray-300"

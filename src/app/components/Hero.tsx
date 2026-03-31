@@ -2,7 +2,12 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { useRef } from 'react';
 
-export function Hero() {
+interface HeroProps {
+  onExploreCollection?: () => void;
+  onNewArrivals?: () => void;
+}
+
+export function Hero({ onExploreCollection, onNewArrivals }: HeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -68,6 +73,7 @@ export function Hero() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={onExploreCollection}
               className="group bg-white text-black px-8 py-4 rounded-full font-medium flex items-center gap-2 hover:bg-gray-200 transition-all"
             >
               Explore Collection
@@ -77,6 +83,7 @@ export function Hero() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={onNewArrivals}
               className="border border-white/20 text-white px-8 py-4 rounded-full font-medium hover:bg-white/10 transition-all"
             >
               New Arrivals

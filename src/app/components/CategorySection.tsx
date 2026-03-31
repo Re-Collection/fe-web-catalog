@@ -6,11 +6,12 @@ interface CategorySectionProps {
   title: string;
   products: Product[];
   onViewDetails: (product: Product) => void;
+  sectionId?: string;
 }
 
-export function CategorySection({ title, products, onViewDetails }: CategorySectionProps) {
+export function CategorySection({ title, products, onViewDetails, sectionId }: CategorySectionProps) {
   return (
-    <section className="py-16 md:py-24">
+    <section id={sectionId} className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
