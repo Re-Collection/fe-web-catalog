@@ -85,7 +85,12 @@ export default function App() {
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <ConstellationBackground />
-      <Navigation categories={navCategories} onCategorySelect={handleCategorySelect} />
+      <Navigation
+        categories={navCategories}
+        onCategorySelect={handleCategorySelect}
+        products={allProducts}
+        onProductSelect={handleViewDetails}
+      />
       <div className="pt-24 relative z-10">
         <Routes>
           <Route

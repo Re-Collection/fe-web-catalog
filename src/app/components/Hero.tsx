@@ -45,11 +45,11 @@ export function Hero({ onExploreCollection, onNewArrivals }: HeroProps) {
           >
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6">
               <span className="bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
-                Elevate Your
+                Hecha un
               </span>
               <br />
               <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                Lifestyle
+                Vistazo
               </span>
             </h1>
           </motion.div>
@@ -60,8 +60,7 @@ export function Hero({ onExploreCollection, onNewArrivals }: HeroProps) {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-gray-400 text-lg md:text-xl mb-8 max-w-2xl mx-auto"
           >
-            Discover premium products that blend cutting-edge design with unmatched quality.
-            Your journey to excellence starts here.
+            Encontré varias cosas que me gustaría vender. Capaz alguna te interesa 👀.
           </motion.p>
 
           <motion.div
@@ -98,8 +97,8 @@ export function Hero({ onExploreCollection, onNewArrivals }: HeroProps) {
             className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
           >
             {[
-              { value: '500+', label: 'Products' },
-              { value: '50K+', label: 'Customers' },
+              { value: '80+', label: 'Products' },
+              { value: '50K+', label: 'Visits' },
               { value: '4.9★', label: 'Rating' },
             ].map((stat, index) => (
               <div key={index} className="text-center">
