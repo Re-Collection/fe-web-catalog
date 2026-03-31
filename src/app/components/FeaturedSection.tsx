@@ -40,17 +40,21 @@ export function FeaturedSection({ products, onViewDetails }: FeaturedSectionProp
 
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {products.map((product, index) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <ProductCard product={product} onViewDetails={onViewDetails} />
-            </motion.div>
-          ))}
+          {products.map((product, index) => {
+            const animationDelay = Math.min(index * 0.1, 0.4);
+
+            return (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: animationDelay }}
+              >
+                <ProductCard product={product} onViewDetails={onViewDetails} />
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
