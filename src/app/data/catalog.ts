@@ -1,3 +1,5 @@
+import manualCatalogOverrides from './manualCatalogOverrides';
+
 const imageModules = import.meta.glob<string>(
   '/src/assets/Productos/**/*.{jpg,jpeg,png,webp}',
   { eager: true, import: 'default' }
@@ -29,9 +31,9 @@ interface ProductAccumulator {
   detalle?: string;
 }
 
-const priceOverrides: Record<string, { precio: number; precioViejo?: number }> = {
-  // 'Categoria/Subcategoria/Producto': { precio: 199.9, precioViejo: 249.9 },
-};
+const manualOverrideMap = new Map(
+  manualCatalogOverrides.map((override) => [override.folderKey, override])
+);
 
 const normalizeSegment = (segment: string) =>
   segment
@@ -100,12 +102,16 @@ Object.entries(imageModules).forEach(([fullPath, src]) => {
   const subcategoriaPlural = toTitleCase(rawSubcategory);
   const subcategoria = singularizePhrase(subcategoriaPlural);
   const producto = toTitleCase(rawProduct);
-  const nombre = `${subcategoria} ${producto}`.trim();
+  const baseName = `${subcategoria} ${producto}`.trim();
   const carpetaImagenes = folderKey;
 
   if (!productMap.has(folderKey)) {
-    const override = priceOverrides[folderKey];
-    const precio = override?.precio ?? priceFromName(nombre);
+    const override = manualOverrideMap.get(folderKey);
+    const nombre = override?.nombre ?? baseName;
+    const precioBase = priceFromName(nombre);
+    const precio = override?.precio ?? precioBase;
+    const precioViejoBase = Math.round(precio * 1.18 * 100) / 100;
+    const precioViejo = override?.precioViejo ?? precioViejoBase;
     productMap.set(folderKey, {
       categoria,
       subcategoria,
@@ -113,8 +119,8 @@ Object.entries(imageModules).forEach(([fullPath, src]) => {
       nombre,
       imagenes: [],
       precio,
-      precioViejo: override?.precioViejo ?? Math.round(precio * 1.18 * 100) / 100,
-      detalle: detailFromName(nombre, categoria),
+      precioViejo,
+      detalle: override?.detalle ?? detailFromName(nombre, categoria),
     });
   }
 
@@ -152,5 +158,15 @@ const catalog: CatalogCategory[] = Array.from(categoriesMap.values())
     productos: category.productos.sort((a, b) => a.nombre.localeCompare(b.nombre)),
   }))
   .sort((a, b) => a.categoria.localeCompare(b.categoria));
+
+export const catalogEditableSnapshot = Array.from(productMap.values())
+  .map((product) => ({
+    folderKey: product.carpetaImagenes,
+    categoria: product.categoria,
+    nombre: product.nombre,
+    precio: product.precio,
+    precioViejo: product.precioViejo,
+  }))
+  .sort((a, b) => a.nombre.localeCompare(b.nombre));
 
 export default catalog;
