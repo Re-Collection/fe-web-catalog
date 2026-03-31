@@ -12,6 +12,7 @@ export interface CatalogProduct {
   imagenes: string[];
   precio: number;
   precioViejo?: number;
+  descripcion?: string;
   detalle?: string;
 }
 
@@ -28,6 +29,7 @@ interface ProductAccumulator {
   imagenes: { src: string; order: number }[];
   precio: number;
   precioViejo?: number;
+  descripcion?: string;
   detalle?: string;
 }
 
@@ -112,6 +114,8 @@ Object.entries(imageModules).forEach(([fullPath, src]) => {
     const precio = override?.precio ?? precioBase;
     const precioViejoBase = Math.round(precio * 1.18 * 100) / 100;
     const precioViejo = override?.precioViejo ?? precioViejoBase;
+    const descripcion = override?.descripcion ?? detailFromName(nombre, categoria);
+    const detalle = override?.detalle ?? '';
     productMap.set(folderKey, {
       categoria,
       subcategoria,
@@ -120,7 +124,8 @@ Object.entries(imageModules).forEach(([fullPath, src]) => {
       imagenes: [],
       precio,
       precioViejo,
-      detalle: override?.detalle ?? detailFromName(nombre, categoria),
+      descripcion,
+      detalle,
     });
   }
 
@@ -148,6 +153,7 @@ productMap.forEach((accumulator) => {
     imagenes: imagenesOrdenadas,
     precio: accumulator.precio,
     precioViejo: accumulator.precioViejo,
+    descripcion: accumulator.descripcion,
     detalle: accumulator.detalle,
   });
 });

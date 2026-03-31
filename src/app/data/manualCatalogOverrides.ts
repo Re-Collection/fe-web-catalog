@@ -4,6 +4,7 @@ export interface ManualCatalogOverride {
   nombre?: string;
   precio?: number;
   precioViejo?: number;
+  descripcion?: string;
   detalle?: string;
 }
 
@@ -14,15 +15,61 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Audifono Original In Ear AKG Cable Tipo C",
     precio: 20,
     precioViejo: 35.00,
-    detalle: "Descubre Audifono Akg Cable Tipo C dentro de la categoría Tecnologia.",
+    descripcion: "Descubre Audifono Akg Cable Tipo C dentro de la categoría Tecnologia.",
+    detalle: "",
   },
   {
     folderKey: "_Tecnologia/Audifonos/DeWalt Banda de Cuello",
     categoria: "Tecnologia",
     nombre: "Audifono Dewalt Banda De Cuello",
-    precio: 329,
-    precioViejo: 388.22,
-    detalle: "Descubre Audifono Dewalt Banda De Cuello dentro de la categoría Tecnologia.",
+    precio: 180,
+    precioViejo: 200,
+    descripcion: `🔊 AUDÍFONOS DEWALT JOBSITE PRO 🔥
+
+💪 Diseñados para trabajo duro, deporte y uso diario
+
+━━━━━━━━━━━━━━━━━━━
+
+🔋 Batería
+☑️ Hasta 15 - 30 horas de uso
+☑️ Ideal para todo el día sin cargar
+
+━━━━━━━━━━━━━━━━━━━
+
+💦 Resistencia
+☑️ Certificación IPX6 (resistente a sudor y lluvia)
+☑️ Perfectos para gym, obra o exteriores
+
+━━━━━━━━━━━━━━━━━━━
+
+📡 Conectividad
+☑️ Bluetooth 5.0
+☑️ Conexión rápida y estable
+
+━━━━━━━━━━━━━━━━━━━
+
+🎧 Comodidad
+☑️ Diseño de cuello (neckband)
+☑️ No se caen fácilmente
+☑️ Ajuste cómodo
+
+━━━━━━━━━━━━━━━━━━━
+
+🎤 Funciones
+☑️ Micrófono integrado
+☑️ Controles físicos
+
+━━━━━━━━━━━━━━━━━━━
+
+🧲 Extras
+☑️ Audífonos magnéticos
+☑️ Carga USB-C
+
+━━━━━━━━━━━━━━━━━━━
+
+⚠️ DETALLE:
+Solo funciona uno de los auriculares`,
+    detalle: "",
   },
   {
     folderKey: "_Tecnologia/Audifonos/Sony WF-1000XM4",
@@ -30,7 +77,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Audifono Sony Wf 1000xm4",
     precio: 165,
     precioViejo: 194.7,
-    detalle: "Solo funciona uno de los auriculares.",
+    descripcion: "Solo funciona uno de los auriculares.",
+    detalle: "",
   },
   {
     folderKey: "_Accesorios/Billeteras/Billetera Azul Pull & Bear",
@@ -38,7 +86,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Billetera Pull & Bear Azul",
     precio: 113,
     precioViejo: 133.34,
-    detalle: "Descubre Billetera Pull & Bear Azul dentro de la categoría Accesorios.",
+    descripcion: "Descubre Billetera Pull & Bear Azul dentro de la categoría Accesorios.",
+    detalle: "",
   },
   {
     folderKey: "_Accesorios/Billeteras/Billetera Blanco y Negro FLY",
@@ -46,7 +95,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Billetera Fly Blanco Y Negro",
     precio: 358,
     precioViejo: 422.44,
-    detalle: "Descubre Billetera Blanco Y Negro Fly dentro de la categoría Accesorios.",
+    descripcion: "Descubre Billetera Blanco Y Negro Fly dentro de la categoría Accesorios.",
+    detalle: "",
   },
   {
     folderKey: "_Accesorios/Billeteras/Billetera Marron Rally",
@@ -54,7 +104,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Billetera Rally Marron",
     precio: 267,
     precioViejo: 315.06,
-    detalle: "Descubre Billetera Rally Marron dentro de la categoría Accesorios.",
+    descripcion: "Descubre Billetera Rally Marron dentro de la categoría Accesorios.",
+    detalle: "",
   },
   {
     folderKey: "_Tecnologia/Brazaletes Led/Modelo 1",
@@ -62,7 +113,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Brazaletes Led Modelo 1",
     precio: 227,
     precioViejo: 267.86,
-    detalle: "Descubre Brazaletes Led Modelo 1 dentro de la categoría Tecnologia.",
+    descripcion: "Descubre Brazaletes Led Modelo 1 dentro de la categoría Tecnologia.",
+    detalle: "",
   },
   {
     folderKey: "_Tecnologia/Brazaletes Led/Modelo 2",
@@ -70,7 +122,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Brazaletes Led Modelo 2",
     precio: 228,
     precioViejo: 269.04,
-    detalle: "Descubre Brazaletes Led Modelo 2 dentro de la categoría Tecnologia.",
+    descripcion: "Descubre Brazaletes Led Modelo 2 dentro de la categoría Tecnologia.",
+    detalle: "",
   },
   {
     folderKey: "_Tecnologia/Cables/Apple",
@@ -78,7 +131,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Cable Apple",
     precio: 121,
     precioViejo: 142.78,
-    detalle: "Descubre Cable Apple dentro de la categoría Tecnologia.",
+    descripcion: "Descubre Cable Apple dentro de la categoría Tecnologia.",
+    detalle: "",
   },
   {
     folderKey: "_Tecnologia/Cables/HDMI",
@@ -86,7 +140,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Cable Hdmi",
     precio: 329,
     precioViejo: 388.22,
-    detalle: "Descubre Cable Hdmi dentro de la categoría Tecnologia.",
+    descripcion: "Descubre Cable Hdmi dentro de la categoría Tecnologia.",
+    detalle: "",
   },
   {
     folderKey: "_Tecnologia/Cargadores/Samsung",
@@ -94,7 +149,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Cargadore Samsung",
     precio: 150,
     precioViejo: 177,
-    detalle: "Descubre Cargadore Samsung dentro de la categoría Tecnologia.",
+    descripcion: "Descubre Cargadore Samsung dentro de la categoría Tecnologia.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Casacas/Adidas Azul",
@@ -102,7 +158,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Casaca Adidas Azul",
     precio: 110,
     precioViejo: 129.8,
-    detalle: "Descubre Casaca Adidas Azul dentro de la categoría Ropa.",
+    descripcion: "Descubre Casaca Adidas Azul dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Casacas/Adidas Blanco",
@@ -110,7 +167,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Casaca Adidas Blanco",
     precio: 289,
     precioViejo: 341.02,
-    detalle: "Descubre Casaca Adidas Blanco dentro de la categoría Ropa.",
+    descripcion: "Descubre Casaca Adidas Blanco dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Deportes/Cascos/Giro",
@@ -118,7 +176,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Casco Giro",
     precio: 362,
     precioViejo: 427.16,
-    detalle: "Descubre Casco Giro dentro de la categoría Deportes.",
+    descripcion: "Descubre Casco Giro dentro de la categoría Deportes.",
+    detalle: "",
   },
   {
     folderKey: "_Accesorios/Correas/Par Genericas Bicolor",
@@ -126,7 +185,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Correa Par Genericas Bicolor",
     precio: 138,
     precioViejo: 162.84,
-    detalle: "Descubre Correa Par Genericas Bicolor dentro de la categoría Accesorios.",
+    descripcion: "Descubre Correa Par Genericas Bicolor dentro de la categoría Accesorios.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Cuellera/Blackstar",
@@ -134,7 +194,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Cuellera Blackstar",
     precio: 244,
     precioViejo: 287.92,
-    detalle: "Descubre Cuellera Blackstar dentro de la categoría Ropa.",
+    descripcion: "Descubre Cuellera Blackstar dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Cuellera/Coal",
@@ -142,7 +203,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Cuellera Coal",
     precio: 348,
     precioViejo: 410.64,
-    detalle: "Descubre Cuellera Coal dentro de la categoría Ropa.",
+    descripcion: "Descubre Cuellera Coal dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Cuellera/Generica",
@@ -150,7 +212,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Cuellera Generica",
     precio: 123,
     precioViejo: 145.14,
-    detalle: "Descubre Cuellera Generica dentro de la categoría Ropa.",
+    descripcion: "Descubre Cuellera Generica dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Cuellera/TurtleFur_1",
@@ -158,7 +221,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Cuellera Turtlefur 1",
     precio: 379,
     precioViejo: 447.22,
-    detalle: "Descubre Cuellera Turtlefur 1 dentro de la categoría Ropa.",
+    descripcion: "Descubre Cuellera Turtlefur 1 dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Cuellera/TurtleFur_2",
@@ -166,7 +230,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Cuellera Turtlefur 2",
     precio: 380,
     precioViejo: 448.4,
-    detalle: "Descubre Cuellera Turtlefur 2 dentro de la categoría Ropa.",
+    descripcion: "Descubre Cuellera Turtlefur 2 dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Accesorios/Encendedores/Pistola",
@@ -174,7 +239,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Encendedore Pistola",
     precio: 360,
     precioViejo: 424.8,
-    detalle: "Descubre Encendedore Pistola dentro de la categoría Accesorios.",
+    descripcion: "Descubre Encendedore Pistola dentro de la categoría Accesorios.",
+    detalle: "",
   },
   {
     folderKey: "_Objetos_Varios/Focos/Termico de Ceramica",
@@ -182,7 +248,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Foco Termico De Ceramica",
     precio: 328,
     precioViejo: 387.04,
-    detalle: "Descubre Foco Termico De Ceramica dentro de la categoría Objetos Varios.",
+    descripcion: "Descubre Foco Termico De Ceramica dentro de la categoría Objetos Varios.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Gorros/Gorro_ContraSol",
@@ -190,7 +257,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Gorro Gorro Contrasol",
     precio: 215,
     precioViejo: 253.7,
-    detalle: "Descubre Gorro Gorro Contrasol dentro de la categoría Ropa.",
+    descripcion: "Descubre Gorro Gorro Contrasol dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Gorros/Nyon",
@@ -198,7 +266,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Gorro Nyon",
     precio: 93,
     precioViejo: 109.74,
-    detalle: "Descubre Gorro Nyon dentro de la categoría Ropa.",
+    descripcion: "Descubre Gorro Nyon dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Gorros/Yumo_Wait",
@@ -206,7 +275,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Gorro Yumo Wait",
     precio: 216,
     precioViejo: 254.88,
-    detalle: "Descubre Gorro Yumo Wait dentro de la categoría Ropa.",
+    descripcion: "Descubre Gorro Yumo Wait dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Guantes/Burton",
@@ -214,7 +284,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Guante Burton",
     precio: 398,
     precioViejo: 469.64,
-    detalle: "Descubre Guante Burton dentro de la categoría Ropa.",
+    descripcion: "Descubre Guante Burton dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Guantes/Carhartt",
@@ -222,7 +293,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Guante Carhartt",
     precio: 269,
     precioViejo: 317.42,
-    detalle: "Descubre Guante Carhartt dentro de la categoría Ropa.",
+    descripcion: "Descubre Guante Carhartt dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Guantes/Dakine__FALTA-GUANTES-BLANCOS",
@@ -230,7 +302,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Guante Dakine Falta Guantes Blancos",
     precio: 129,
     precioViejo: 152.22,
-    detalle: "Descubre Guante Dakine Falta Guantes Blancos dentro de la categoría Ropa.",
+    descripcion: "Descubre Guante Dakine Falta Guantes Blancos dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Guantes/Nike",
@@ -238,7 +311,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Guante Nike",
     precio: 155,
     precioViejo: 182.9,
-    detalle: "Descubre Guante Nike dentro de la categoría Ropa.",
+    descripcion: "Descubre Guante Nike dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Guantes/NorthFace",
@@ -246,7 +320,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Guante Northface",
     precio: 366,
     precioViejo: 431.88,
-    detalle: "Descubre Guante Northface dentro de la categoría Ropa.",
+    descripcion: "Descubre Guante Northface dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Guantes/Outback",
@@ -254,7 +329,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Guante Outback",
     precio: 157,
     precioViejo: 185.26,
-    detalle: "Descubre Guante Outback dentro de la categoría Ropa.",
+    descripcion: "Descubre Guante Outback dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Guantes/RBX",
@@ -262,7 +338,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Guante Rbx",
     precio: 384,
     precioViejo: 453.12,
-    detalle: "Descubre Guante Rbx dentro de la categoría Ropa.",
+    descripcion: "Descubre Guante Rbx dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Guantes/Yacht&Smith",
@@ -270,7 +347,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Guante Yacht&smith",
     precio: 216,
     precioViejo: 254.88,
-    detalle: "Descubre Guante Yacht&smith dentro de la categoría Ropa.",
+    descripcion: "Descubre Guante Yacht&smith dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Masks/Seirus",
@@ -278,7 +356,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Masks Seirus",
     precio: 298,
     precioViejo: 351.64,
-    detalle: "Descubre Masks Seirus dentro de la categoría Ropa.",
+    descripcion: "Descubre Masks Seirus dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Deportes/Mochilas/Boombah",
@@ -286,7 +365,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Mochila Boombah",
     precio: 229,
     precioViejo: 270.22,
-    detalle: "Descubre Mochila Boombah dentro de la categoría Deportes.",
+    descripcion: "Descubre Mochila Boombah dentro de la categoría Deportes.",
+    detalle: "",
   },
   {
     folderKey: "_Deportes/Mochilas/PowerLand",
@@ -294,7 +374,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Mochila Powerland",
     precio: 153,
     precioViejo: 180.54,
-    detalle: "Descubre Mochila Powerland dentro de la categoría Deportes.",
+    descripcion: "Descubre Mochila Powerland dentro de la categoría Deportes.",
+    detalle: "",
   },
   {
     folderKey: "_Deportes/Mochilas/VOL",
@@ -302,7 +383,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Mochila Vol",
     precio: 158,
     precioViejo: 186.44,
-    detalle: "Descubre Mochila Vol dentro de la categoría Deportes.",
+    descripcion: "Descubre Mochila Vol dentro de la categoría Deportes.",
+    detalle: "",
   },
   {
     folderKey: "_Accesorios/Monederos/Generico",
@@ -310,7 +392,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Monedero Generico",
     precio: 149,
     precioViejo: 175.82,
-    detalle: "Descubre Monedero Generico dentro de la categoría Accesorios.",
+    descripcion: "Descubre Monedero Generico dentro de la categoría Accesorios.",
+    detalle: "",
   },
   {
     folderKey: "_Accesorios/Morral Azul/Generico Azul",
@@ -318,7 +401,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Morral Azul Generico Azul",
     precio: 193,
     precioViejo: 227.74,
-    detalle: "Descubre Morral Azul Generico Azul dentro de la categoría Accesorios.",
+    descripcion: "Descubre Morral Azul Generico Azul dentro de la categoría Accesorios.",
+    detalle: "",
   },
   {
     folderKey: "_Deportes/Munequeras/Dinam",
@@ -326,7 +410,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Munequera Dinam",
     precio: 268,
     precioViejo: 316.24,
-    detalle: "Descubre Munequera Dinam dentro de la categoría Deportes.",
+    descripcion: "Descubre Munequera Dinam dentro de la categoría Deportes.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pantalones/Elegante Gardel",
@@ -334,7 +419,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pantalone Elegante Gardel",
     precio: 230,
     precioViejo: 271.4,
-    detalle: "Descubre Pantalone Elegante Gardel dentro de la categoría Ropa.",
+    descripcion: "Descubre Pantalone Elegante Gardel dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pantalones/Elegante Lamdier's",
@@ -342,7 +428,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pantalone Elegante Lamdier's",
     precio: 175,
     precioViejo: 206.5,
-    detalle: "Descubre Pantalone Elegante Lamdier's dentro de la categoría Ropa.",
+    descripcion: "Descubre Pantalone Elegante Lamdier's dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pantalones/Jogger Generico",
@@ -350,7 +437,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pantalone Jogger Generico",
     precio: 252,
     precioViejo: 297.36,
-    detalle: "Descubre Pantalone Jogger Generico dentro de la categoría Ropa.",
+    descripcion: "Descubre Pantalone Jogger Generico dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pantalones/Jogger RG",
@@ -358,7 +446,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pantalone Jogger Rg",
     precio: 265,
     precioViejo: 312.7,
-    detalle: "Descubre Pantalone Jogger Rg dentro de la categoría Ropa.",
+    descripcion: "Descubre Pantalone Jogger Rg dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pantalones/Pitillo Element",
@@ -366,7 +455,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pantalone Pitillo Element",
     precio: 281,
     precioViejo: 331.58,
-    detalle: "Descubre Pantalone Pitillo Element dentro de la categoría Ropa.",
+    descripcion: "Descubre Pantalone Pitillo Element dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pantalones/Recto Ohio",
@@ -374,7 +464,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pantalone Recto Ohio",
     precio: 382,
     precioViejo: 450.76,
-    detalle: "Descubre Pantalone Recto Ohio dentro de la categoría Ropa.",
+    descripcion: "Descubre Pantalone Recto Ohio dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pantalones/Semipitillo Basement",
@@ -382,7 +473,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pantalone Semipitillo Basement",
     precio: 172,
     precioViejo: 202.96,
-    detalle: "Descubre Pantalone Semipitillo Basement dentro de la categoría Ropa.",
+    descripcion: "Descubre Pantalone Semipitillo Basement dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pantalones/Semipitillo Bearcliff",
@@ -390,7 +482,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pantalone Semipitillo Bearcliff",
     precio: 251,
     precioViejo: 296.18,
-    detalle: "Descubre Pantalone Semipitillo Bearcliff dentro de la categoría Ropa.",
+    descripcion: "Descubre Pantalone Semipitillo Bearcliff dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pantalones/Semipitillo ConttonsJeans",
@@ -398,7 +491,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pantalone Semipitillo Conttonsjeans",
     precio: 102,
     precioViejo: 120.36,
-    detalle: "Descubre Pantalone Semipitillo Conttonsjeans dentro de la categoría Ropa.",
+    descripcion: "Descubre Pantalone Semipitillo Conttonsjeans dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pantalones/Semipitillo DenimLab",
@@ -406,7 +500,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pantalone Semipitillo Denimlab",
     precio: 153,
     precioViejo: 180.54,
-    detalle: "Descubre Pantalone Semipitillo Denimlab dentro de la categoría Ropa.",
+    descripcion: "Descubre Pantalone Semipitillo Denimlab dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pantalones/Semipitillo Index",
@@ -414,7 +509,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pantalone Semipitillo Index",
     precio: 181,
     precioViejo: 213.58,
-    detalle: "Descubre Pantalone Semipitillo Index dentro de la categoría Ropa.",
+    descripcion: "Descubre Pantalone Semipitillo Index dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pantalones/Semipitillo Kayraman",
@@ -422,7 +518,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pantalone Semipitillo Kayraman",
     precio: 177,
     precioViejo: 208.86,
-    detalle: "Descubre Pantalone Semipitillo Kayraman dentro de la categoría Ropa.",
+    descripcion: "Descubre Pantalone Semipitillo Kayraman dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pantalones/Semipitillo Navigata",
@@ -430,7 +527,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pantalone Semipitillo Navigata",
     precio: 168,
     precioViejo: 198.24,
-    detalle: "Descubre Pantalone Semipitillo Navigata dentro de la categoría Ropa.",
+    descripcion: "Descubre Pantalone Semipitillo Navigata dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pantalones/Semipitillo Ordan",
@@ -438,7 +536,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pantalone Semipitillo Ordan",
     precio: 177,
     precioViejo: 208.86,
-    detalle: "Descubre Pantalone Semipitillo Ordan dentro de la categoría Ropa.",
+    descripcion: "Descubre Pantalone Semipitillo Ordan dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pantalones/Semipitillo Pioner",
@@ -446,7 +545,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pantalone Semipitillo Pioner",
     precio: 298,
     precioViejo: 351.64,
-    detalle: "Descubre Pantalone Semipitillo Pioner dentro de la categoría Ropa.",
+    descripcion: "Descubre Pantalone Semipitillo Pioner dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pantalones/Semipitillo RG",
@@ -454,7 +554,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pantalone Semipitillo Rg",
     precio: 182,
     precioViejo: 214.76,
-    detalle: "Descubre Pantalone Semipitillo Rg dentro de la categoría Ropa.",
+    descripcion: "Descubre Pantalone Semipitillo Rg dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pasamontanas/100 Poliester 1",
@@ -462,7 +563,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pasamontana 100 Poliester 1",
     precio: 220,
     precioViejo: 259.6,
-    detalle: "Descubre Pasamontana 100 Poliester 1 dentro de la categoría Ropa.",
+    descripcion: "Descubre Pasamontana 100 Poliester 1 dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pasamontanas/100 Poliester 2",
@@ -470,7 +572,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pasamontana 100 Poliester 2",
     precio: 221,
     precioViejo: 260.78,
-    detalle: "Descubre Pasamontana 100 Poliester 2 dentro de la categoría Ropa.",
+    descripcion: "Descubre Pasamontana 100 Poliester 2 dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pasamontanas/Generico Rojo",
@@ -478,7 +581,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pasamontana Generico Rojo",
     precio: 265,
     precioViejo: 312.7,
-    detalle: "Descubre Pasamontana Generico Rojo dentro de la categoría Ropa.",
+    descripcion: "Descubre Pasamontana Generico Rojo dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pasamontanas/Gxcror",
@@ -486,7 +590,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pasamontana Gxcror",
     precio: 280,
     precioViejo: 330.4,
-    detalle: "Descubre Pasamontana Gxcror dentro de la categoría Ropa.",
+    descripcion: "Descubre Pasamontana Gxcror dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pasamontanas/Rockbros",
@@ -494,7 +599,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pasamontana Rockbros",
     precio: 168,
     precioViejo: 198.24,
-    detalle: "Descubre Pasamontana Rockbros dentro de la categoría Ropa.",
+    descripcion: "Descubre Pasamontana Rockbros dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pasamontanas/Seirus",
@@ -502,7 +608,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pasamontana Seirus",
     precio: 286,
     precioViejo: 337.48,
-    detalle: "Descubre Pasamontana Seirus dentro de la categoría Ropa.",
+    descripcion: "Descubre Pasamontana Seirus dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pasamontanas/Supreme",
@@ -510,7 +617,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pasamontana Supreme",
     precio: 388,
     precioViejo: 457.84,
-    detalle: "Descubre Pasamontana Supreme dentro de la categoría Ropa.",
+    descripcion: "Descubre Pasamontana Supreme dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Pasamontanas/TurtleFur",
@@ -518,7 +626,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pasamontana Turtlefur",
     precio: 304,
     precioViejo: 358.72,
-    detalle: "Descubre Pasamontana Turtlefur dentro de la categoría Ropa.",
+    descripcion: "Descubre Pasamontana Turtlefur dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Accesorios/Pechera/Generica Negra",
@@ -526,7 +635,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Pechera Generica Negra",
     precio: 211,
     precioViejo: 248.98,
-    detalle: "Descubre Pechera Generica Negra dentro de la categoría Accesorios.",
+    descripcion: "Descubre Pechera Generica Negra dentro de la categoría Accesorios.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Poleras/Volcom",
@@ -534,7 +644,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Polera Volcom",
     precio: 387,
     precioViejo: 456.66,
-    detalle: "Descubre Polera Volcom dentro de la categoría Ropa.",
+    descripcion: "Descubre Polera Volcom dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Deportes/Protectores Genitales/Adidas de Genitales y Coxis",
@@ -542,7 +653,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Protectores Genitale Adidas De Genitales Y Coxis",
     precio: 381,
     precioViejo: 449.58,
-    detalle: "Descubre Protectores Genitale Adidas De Genitales Y Coxis dentro de la categoría Deportes.",
+    descripcion: "Descubre Protectores Genitale Adidas De Genitales Y Coxis dentro de la categoría Deportes.",
+    detalle: "",
   },
   {
     folderKey: "_Accesorios/Relojes/Reloj Dorado GreatLand",
@@ -550,7 +662,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Reloje Reloj Dorado Greatland",
     precio: 248,
     precioViejo: 292.64,
-    detalle: "Descubre Reloje Reloj Dorado Greatland dentro de la categoría Accesorios.",
+    descripcion: "Descubre Reloje Reloj Dorado Greatland dentro de la categoría Accesorios.",
+    detalle: "",
   },
   {
     folderKey: "_Accesorios/Relojes/Reloj Verde y Negro QUARTZ",
@@ -558,7 +671,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Reloje Reloj Verde Y Negro Quartz",
     precio: 222,
     precioViejo: 261.96,
-    detalle: "Descubre Reloje Reloj Verde Y Negro Quartz dentro de la categoría Accesorios.",
+    descripcion: "Descubre Reloje Reloj Verde Y Negro Quartz dentro de la categoría Accesorios.",
+    detalle: "",
   },
   {
     folderKey: "_Accesorios/Relojes/Reloj X-Sports",
@@ -566,7 +680,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Reloje Reloj X Sports",
     precio: 112,
     precioViejo: 132.16,
-    detalle: "Descubre Reloje Reloj X Sports dentro de la categoría Accesorios.",
+    descripcion: "Descubre Reloje Reloj X Sports dentro de la categoría Accesorios.",
+    detalle: "",
   },
   {
     folderKey: "_Tecnologia/Speakers/Aomais",
@@ -574,7 +689,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Speakers Aomais",
     precio: 264,
     precioViejo: 311.52,
-    detalle: "Descubre Speakers Aomais dentro de la categoría Tecnologia.",
+    descripcion: "Descubre Speakers Aomais dentro de la categoría Tecnologia.",
+    detalle: "",
   },
   {
     folderKey: "_Tecnologia/SportCams/Eken",
@@ -582,7 +698,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Sportcams Eken",
     precio: 175,
     precioViejo: 206.5,
-    detalle: "Descubre Sportcams Eken dentro de la categoría Tecnologia.",
+    descripcion: "Descubre Sportcams Eken dentro de la categoría Tecnologia.",
+    detalle: "",
   },
   {
     folderKey: "_Tecnologia/SportCams/UHD_Pro",
@@ -590,7 +707,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Sportcams Uhd Pro",
     precio: 94,
     precioViejo: 110.92,
-    detalle: "Descubre Sportcams Uhd Pro dentro de la categoría Tecnologia.",
+    descripcion: "Descubre Sportcams Uhd Pro dentro de la categoría Tecnologia.",
+    detalle: "",
   },
   {
     folderKey: "_Tomatodos/UPC/Termo",
@@ -598,7 +716,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Upc Termo",
     precio: 287,
     precioViejo: 338.66,
-    detalle: "Descubre Upc Termo dentro de la categoría Tomatodos.",
+    descripcion: "Descubre Upc Termo dentro de la categoría Tomatodos.",
+    detalle: "",
   },
   {
     folderKey: "_Tomatodos/UPC/Vaso",
@@ -606,7 +725,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Upc Vaso",
     precio: 15.00,
     precioViejo: 20.00,
-    detalle: "Descubre Upc Vaso dentro de la categoría Tomatodos.",
+    descripcion: "Descubre Upc Vaso dentro de la categoría Tomatodos.",
+    detalle: "",
   },
   {
     folderKey: "_Tomatodos/UPC/VidaUniversitaria",
@@ -614,7 +734,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Upc Vidauniversitaria",
     precio: 290,
     precioViejo: 342.2,
-    detalle: "Descubre Upc Vidauniversitaria dentro de la categoría Tomatodos.",
+    descripcion: "Descubre Upc Vidauniversitaria dentro de la categoría Tomatodos.",
+    detalle: "",
   },
   {
     folderKey: "_Tecnologia/WebCams/Halion",
@@ -622,7 +743,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Webcams Halion",
     precio: 141,
     precioViejo: 166.38,
-    detalle: "Descubre Webcams Halion dentro de la categoría Tecnologia.",
+    descripcion: "Descubre Webcams Halion dentro de la categoría Tecnologia.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Zapatillas/AmarilloNegro",
@@ -630,7 +752,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Zapatilla Amarillonegro",
     precio: 158,
     precioViejo: 186.44,
-    detalle: "Descubre Zapatilla Amarillonegro dentro de la categoría Ropa.",
+    descripcion: "Descubre Zapatilla Amarillonegro dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Zapatillas/Marrones",
@@ -638,7 +761,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Zapatilla Marrones",
     precio: 281,
     precioViejo: 331.58,
-    detalle: "Descubre Zapatilla Marrones dentro de la categoría Ropa.",
+    descripcion: "Descubre Zapatilla Marrones dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Zapatillas/Naranjas",
@@ -646,7 +770,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Zapatilla Naranjas",
     precio: 256,
     precioViejo: 302.08,
-    detalle: "Descubre Zapatilla Naranjas dentro de la categoría Ropa.",
+    descripcion: "Descubre Zapatilla Naranjas dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Zapatillas/Negras",
@@ -654,7 +779,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Zapatilla Negras",
     precio: 370,
     precioViejo: 436.6,
-    detalle: "Descubre Zapatilla Negras dentro de la categoría Ropa.",
+    descripcion: "Descubre Zapatilla Negras dentro de la categoría Ropa.",
+    detalle: "",
   },
   {
     folderKey: "_Ropa/Zapatillas/Verdes",
@@ -662,7 +788,8 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
     nombre: "Zapatilla Verdes",
     precio: 379,
     precioViejo: 447.22,
-    detalle: "Descubre Zapatilla Verdes dentro de la categoría Ropa.",
+    descripcion: "Descubre Zapatilla Verdes dentro de la categoría Ropa.",
+    detalle: "",
   },
 ];
 

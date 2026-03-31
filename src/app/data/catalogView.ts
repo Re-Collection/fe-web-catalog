@@ -39,7 +39,7 @@ const buildCatalogViewModel = () => {
             price: producto.precio,
             oldPrice: producto.precioViejo,
             detail: producto.detalle,
-            description: producto.detalle,
+            description: producto.descripcion,
             category: category.categoria,
             subcategory: producto.subcategoria,
             image: mainImage,

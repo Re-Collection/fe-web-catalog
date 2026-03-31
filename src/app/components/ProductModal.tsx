@@ -153,7 +153,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                     )}
 
                     {/* Description */}
-                    <p className="text-gray-400 mb-8 leading-relaxed">
+                    <p className="text-gray-400 mb-8 leading-relaxed whitespace-pre-line">
                       {product.description ||
                         'Explora cada ángulo del producto usando la galería y revisa la información destacada para conocer sus principales características.'}
                     </p>

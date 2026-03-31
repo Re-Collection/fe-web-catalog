@@ -111,7 +111,7 @@ export function ProductPage() {
             <p className="text-sm text-rose-300 mb-4">{product.detail}</p>
           )}
 
-          <p className="text-gray-300 leading-relaxed mb-8">
+          <p className="text-gray-300 leading-relaxed whitespace-pre-line mb-8">
             {product.description ||
               'Explora cada detalle del producto, revisa la galería fotográfica y encuentra la información clave para tomar la mejor decisión.'}
           </p>
