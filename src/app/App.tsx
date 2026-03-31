@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
@@ -7,6 +7,7 @@ import { catalogSections, allProducts } from './data/catalogView';
 import featuredProductKeys from './data/featuredProductsConfig';
 import { HomePage } from './pages/HomePage';
 import { ProductPage } from './pages/ProductPage';
+import { ConstellationBackground } from './components/ConstellationBackground';
 
 export default function App() {
   const navigate = useNavigate();
@@ -17,6 +18,10 @@ export default function App() {
     id: section.sectionId,
     label: section.title,
   }));
+
+  const [expandedSections, setExpandedSections] = useState<string[]>(() =>
+    navCategories.slice(0, 2).map((section) => section.id)
+  );
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -38,15 +43,23 @@ export default function App() {
     }
   }, [location.pathname, location.search, setSearchParams]);
 
+  const ensureSectionExpanded = (sectionId: string) => {
+    setExpandedSections((prev) =>
+      prev.includes(sectionId) ? prev : [...prev, sectionId]
+    );
+  };
+
   const handleCategorySelect = (sectionId: string) => {
     if (!sectionId) return;
+
+    ensureSectionExpanded(sectionId);
 
     if (location.pathname !== '/') {
       navigate(`/?section=${sectionId}`);
       return;
     }
 
-    scrollToSection(sectionId);
+    requestAnimationFrame(() => scrollToSection(sectionId));
   };
 
   const handleViewDetails = (product: Product) => {
@@ -70,9 +83,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      <ConstellationBackground />
       <Navigation categories={navCategories} onCategorySelect={handleCategorySelect} />
-      <div className="pt-24">
+      <div className="pt-24 relative z-10">
         <Routes>
           <Route
             path="/"
@@ -84,13 +98,17 @@ export default function App() {
                 onViewDetails={handleViewDetails}
                 onExploreCollection={handleExploreCollection}
                 onNewArrivals={() => handleCategorySelect(firstSectionId ?? '')}
+                expandedSections={expandedSections}
+                onSectionsChange={setExpandedSections}
               />
             }
           />
           <Route path="/producto/:slug" element={<ProductPage />} />
         </Routes>
       </div>
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </div>
   );
 }
