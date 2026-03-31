@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { X, ZoomIn } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { X, ZoomIn, ChevronDown, RotateCcw } from 'lucide-react';
+import { useEffect, useState, MouseEvent, WheelEvent } from 'react';
 import { Product } from './ProductCard';
 import { formatCurrency } from '../utils/currency';
 
@@ -12,16 +12,51 @@ interface ProductModalProps {
 
 export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
   const [selectedImage, setSelectedImage] = useState(0);
-  const [isZoomed, setIsZoomed] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(1);
+  const [transformOrigin, setTransformOrigin] = useState('center');
+  const [infoOpen, setInfoOpen] = useState(true);
+  const zoomBounds = { min: 1, max: 2.5 };
+
+  const clampZoom = (value: number) => Math.min(zoomBounds.max, Math.max(zoomBounds.min, value));
+
+  const resetZoom = () => {
+    setZoomLevel(1);
+    setTransformOrigin('center');
+  };
+
+  const handleWheelZoom = (event: WheelEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    const delta = event.deltaY < 0 ? 0.12 : -0.12;
+    setZoomLevel((prev) => clampZoom(Number((prev + delta).toFixed(2))));
+  };
+
+  const handleImageClick = () => {
+    setZoomLevel((prev) => (prev > 1 ? 1 : 1.5));
+  };
+
+  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+    if (zoomLevel === 1) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    setTransformOrigin(`${x}% ${y}%`);
+  };
 
   if (!product) return null;
 
   const images = product.images && product.images.length > 0 ? product.images : [product.image];
+  const isZoomed = zoomLevel > 1.01;
 
   useEffect(() => {
     setSelectedImage(0);
-    setIsZoomed(false);
+    setZoomLevel(1);
+    setTransformOrigin('center');
   }, [product?.id, isOpen]);
+
+  useEffect(() => {
+    setZoomLevel(1);
+    setTransformOrigin('center');
+  }, [selectedImage]);
 
   return (
     <AnimatePresence>
@@ -49,29 +84,50 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                 {/* Image Gallery */}
                 <div className="space-y-4">
                   {/* Main Image */}
-                  <div className="relative aspect-square rounded-2xl overflow-hidden bg-black group">
+                  <div
+                    className="relative aspect-square rounded-2xl overflow-hidden bg-black group"
+                    onWheel={handleWheelZoom}
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={() => setTransformOrigin('center')}
+                  >
                     <motion.img
                       key={selectedImage}
                       initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
+                      animate={{ opacity: 1, scale: zoomLevel }}
+                      transition={{ duration: 0.3, ease: 'easeOut' }}
                       src={images[selectedImage]}
                       alt={product.name}
-                      className={`w-full h-full object-cover transition-transform duration-300 ${
-                        isZoomed ? 'scale-150 cursor-zoom-out' : 'cursor-zoom-in'
-                      }`}
-                      onClick={() => setIsZoomed(!isZoomed)}
+                      className="w-full h-full object-cover"
+                      style={{ transformOrigin, cursor: isZoomed ? 'grab' : 'zoom-in' }}
+                      onClick={handleImageClick}
                     />
+                  </div>
 
-                    {/* Zoom Indicator */}
-                    {!isZoomed && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        whileHover={{ opacity: 1 }}
-                        className="absolute bottom-4 right-4 bg-white/10 backdrop-blur-sm p-2 rounded-full"
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <div className="flex items-center justify-between text-xs text-gray-400 mb-2">
+                      <span>Control de zoom</span>
+                      <span>{zoomLevel.toFixed(1)}x</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <ZoomIn className="w-4 h-4 text-gray-400" />
+                      <input
+                        type="range"
+                        min={zoomBounds.min}
+                        max={zoomBounds.max}
+                        step={0.05}
+                        value={zoomLevel}
+                        onChange={(event) => setZoomLevel(clampZoom(parseFloat(event.target.value)))}
+                        className="flex-1 accent-emerald-300"
+                      />
+                      <button
+                        type="button"
+                        onClick={resetZoom}
+                        className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+                        aria-label="Restablecer zoom"
                       >
-                        <ZoomIn className="w-5 h-5 text-white" />
-                      </motion.div>
-                    )}
+                        <RotateCcw className="w-4 h-4 text-white" />
+                      </button>
+                    </div>
                   </div>
 
                   {/* Thumbnail Images */}
@@ -135,28 +191,53 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
 
                     {/* Price */}
                     <div className="mb-6 flex items-baseline gap-4">
-                      <span className="text-4xl font-bold text-white">
+                      <span className="text-4xl font-bold text-emerald-300">
                         {formatCurrency(product.price)}
                       </span>
                       {product.oldPrice && (
-                        <span className="text-2xl text-gray-500 line-through">
+                        <span className="text-2xl text-rose-400 line-through">
                           {formatCurrency(product.oldPrice)}
                         </span>
                       )}
                     </div>
 
-                    {/* Detail */}
-                    {product.detail && (
-                      <p className="text-sm text-rose-400 font-semibold mb-4">
-                        {product.detail}
-                      </p>
-                    )}
-
-                    {/* Description */}
-                    <p className="text-gray-400 mb-8 leading-relaxed whitespace-pre-line">
-                      {product.description ||
-                        'Explora cada ángulo del producto usando la galería y revisa la información destacada para conocer sus principales características.'}
-                    </p>
+                    {/* Collapsible Info */}
+                    <div className="mb-8 rounded-2xl border border-white/5 bg-white/5">
+                      <button
+                        type="button"
+                        onClick={() => setInfoOpen((prev) => !prev)}
+                        className="w-full flex items-center justify-between px-5 py-4 text-left text-white/90"
+                      >
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.2em] text-gray-400">Información</p>
+                          <p className="text-base font-semibold">Detalles del artículo</p>
+                        </div>
+                        <ChevronDown
+                          className={`w-5 h-5 transition-transform ${infoOpen ? 'rotate-180' : ''}`}
+                        />
+                      </button>
+                      <AnimatePresence initial={false}>
+                        {infoOpen && (
+                          <motion.div
+                            key="modal-info"
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="overflow-hidden px-5 pb-5"
+                          >
+                            {product.detail && (
+                              <p className="text-sm text-rose-400 font-semibold mb-3">
+                                {product.detail}
+                              </p>
+                            )}
+                            <p className="text-gray-300 leading-relaxed whitespace-pre-line">
+                              {product.description ||
+                                'Explora cada ángulo del producto usando la galería y revisa la información destacada para conocer sus principales características.'}
+                            </p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
 
                     {/* Product Snapshot */}
                     <div className="grid gap-4 text-sm text-gray-300">

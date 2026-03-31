@@ -80,11 +80,11 @@ export function ProductCard({ product, onViewDetails }: ProductCardProps) {
           <h3 className="text-white font-medium line-clamp-1">{product.name}</h3>
         </div>
         <div className="flex items-baseline gap-3">
-          <span className="text-2xl font-bold text-white">
+          <span className="text-2xl font-bold text-emerald-300">
             {formatCurrency(product.price)}
           </span>
           {product.oldPrice && (
-            <span className="text-sm text-gray-400 line-through">
+            <span className="text-sm text-rose-400 line-through">
               {formatCurrency(product.oldPrice)}
             </span>
           )}
