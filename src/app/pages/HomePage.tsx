@@ -7,6 +7,7 @@ import type { CatalogSection } from '../data/catalogView';
 interface HomePageProps {
   sections: CatalogSection[];
   allProducts: Product[];
+  featuredProducts: Product[];
   onViewDetails: (product: Product) => void;
   onExploreCollection: () => void;
   onNewArrivals: () => void;
@@ -15,6 +16,7 @@ interface HomePageProps {
 export function HomePage({
   sections,
   allProducts,
+  featuredProducts,
   onViewDetails,
   onExploreCollection,
   onNewArrivals,
@@ -23,8 +25,8 @@ export function HomePage({
     <main>
       <Hero onExploreCollection={onExploreCollection} onNewArrivals={onNewArrivals} />
 
-      {allProducts.length > 0 && (
-        <FeaturedSection products={allProducts} onViewDetails={onViewDetails} />
+      {featuredProducts.length > 0 && (
+        <FeaturedSection products={featuredProducts} onViewDetails={onViewDetails} />
       )}
 
       {sections.map((section) => (
