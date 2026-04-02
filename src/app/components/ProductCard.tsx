@@ -51,6 +51,9 @@ export function ProductCard({ product, onViewDetails }: ProductCardProps) {
           src={product.image}
           alt={product.name}
           className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="low"
           animate={{ scale: isHovered ? 1.1 : 1 }}
           transition={{ duration: 0.6 }}
         />

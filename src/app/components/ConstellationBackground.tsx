@@ -11,6 +11,8 @@ interface Star {
 
 const STAR_COUNT = 90;
 const MAX_DISTANCE = 140;
+const MOBILE_STAR_COUNT = 32;
+const MOBILE_MAX_DISTANCE = 80;
 
 function createStar(width: number, height: number): Star {
   const speed = 0.02 + Math.random() * 0.15;
@@ -37,16 +39,24 @@ export function ConstellationBackground() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 768px), (pointer: coarse)').matches;
+    const targetFps = isMobile ? 24 : 60;
+    const frameDuration = 1000 / targetFps;
+    const starCount = isMobile ? MOBILE_STAR_COUNT : STAR_COUNT;
+    const maxDistance = isMobile ? MOBILE_MAX_DISTANCE : MAX_DISTANCE;
+
     let width = window.innerWidth;
     let height = window.innerHeight;
     let dpr = window.devicePixelRatio || 1;
+    let lastFrameTime = 0;
 
-    const stars: Star[] = Array.from({ length: STAR_COUNT }, () => createStar(width, height));
+    const stars: Star[] = Array.from({ length: starCount }, () => createStar(width, height));
 
     const resize = () => {
       width = window.innerWidth;
       height = window.innerHeight;
-      dpr = window.devicePixelRatio || 1;
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       canvas.style.width = `${width}px`;
@@ -61,16 +71,31 @@ export function ConstellationBackground() {
       if (star.y > height + 20) star.y = -20;
     };
 
-    const draw = () => {
+    const draw = (timestamp: number) => {
+      if (document.hidden) {
+        animationRef.current = requestAnimationFrame(draw);
+        return;
+      }
+
+      if (timestamp - lastFrameTime < frameDuration) {
+        animationRef.current = requestAnimationFrame(draw);
+        return;
+      }
+
+      lastFrameTime = timestamp;
       ctx.clearRect(0, 0, width, height);
       ctx.globalCompositeOperation = 'lighter';
 
       stars.forEach((star) => {
-        star.x += star.vx * star.parallax;
-        star.y += star.vy * star.parallax;
+        if (!reduceMotion) {
+          star.x += star.vx * star.parallax;
+          star.y += star.vy * star.parallax;
+        }
         wrapStar(star);
 
-        const pulse = 0.5 + Math.sin(Date.now() * 0.001 + star.x) * 0.5;
+        const pulse = reduceMotion
+          ? 0.5
+          : 0.5 + Math.sin(Date.now() * 0.001 + star.x) * 0.5;
 
         ctx.beginPath();
         ctx.fillStyle = `rgba(180, 228, 255, ${0.2 + pulse * 0.3})`;
@@ -84,9 +109,9 @@ export function ConstellationBackground() {
           const dy = stars[i].y - stars[j].y;
           const dist = Math.hypot(dx, dy);
 
-          if (dist < MAX_DISTANCE) {
+          if (dist < maxDistance) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(94, 234, 212, ${0.15 * (1 - dist / MAX_DISTANCE)})`;
+            ctx.strokeStyle = `rgba(94, 234, 212, ${0.15 * (1 - dist / maxDistance)})`;
             ctx.lineWidth = 0.6;
             ctx.moveTo(stars[i].x, stars[i].y);
             ctx.lineTo(stars[j].x, stars[j].y);

@@ -172,15 +172,17 @@ export function HomePage({
                     </AccordionTrigger>
 
                     <AccordionContent className="relative z-10 px-2 sm:px-4 md:px-6 lg:px-10 pb-8 md:pb-10">
-                      <CategorySection
-                        title={section.title}
-                        sectionId={section.sectionId}
-                        products={section.products}
-                        onViewDetails={onViewDetails}
-                        showHeader={false}
-                        compact
-                        className="pt-6 md:pt-8"
-                      />
+                      {isOpen && (
+                        <CategorySection
+                          title={section.title}
+                          sectionId={section.sectionId}
+                          products={section.products}
+                          onViewDetails={onViewDetails}
+                          showHeader={false}
+                          compact
+                          className="pt-6 md:pt-8"
+                        />
+                      )}
                     </AccordionContent>
                   </motion.div>
                 </AccordionItem>
