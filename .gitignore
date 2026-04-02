@@ -6,20 +6,61 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-.github/*
 
-node_modules/*
-dist
-dist-ssr
+# Dependency directories
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+build/
+
+# Environment files
+.env*
 *.local
 
 # Editor directories and files
-.vscode/*
+.vscode/
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
+Thumbs.db
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# System files
+*.DS_Store
+*.AppleDouble
+*.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Optional lockfiles (uncomment if you don't want to track)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Coverage directory
+coverage/
+
+# Misc
+*.tgz
+
+# Mac system files
+.AppleDouble
+.LSOverride
+
+# Python virtual env (if used)
+.venv/
+
+# Others
+*.orig
+
+# Ignore attributions if not needed
+# ATTRIBUTIONS.md

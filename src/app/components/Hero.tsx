@@ -1,13 +1,14 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { useRef } from 'react';
+import { MessengerButton } from './MessengerButton';
+import { buildMessengerUrlForGenericInquiry } from '../utils/messenger';
 
 interface HeroProps {
   onExploreCollection?: () => void;
-  onNewArrivals?: () => void;
 }
 
-export function Hero({ onExploreCollection, onNewArrivals }: HeroProps) {
+export function Hero({ onExploreCollection }: HeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -16,6 +17,9 @@ export function Hero({ onExploreCollection, onNewArrivals }: HeroProps) {
 
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const heroMessengerLink = buildMessengerUrlForGenericInquiry(
+    'Hola, quiero consultar por los artículos disponibles en la colección.'
+  ).href;
 
   return (
     <div ref={containerRef} className="relative h-screen overflow-hidden">
@@ -63,6 +67,15 @@ export function Hero({ onExploreCollection, onNewArrivals }: HeroProps) {
             Encontré varias cosas que me gustaría vender. Capaz alguna te interesa 👀.
           </motion.p>
 
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="inline-flex items-center rounded-full border border-emerald-300/40 bg-emerald-300/10 px-5 py-2 text-sm md:text-base text-emerald-200 mb-8"
+          >
+             📍Entrega gratuita en Plaza San Miguel
+          </motion.p>
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -79,14 +92,11 @@ export function Hero({ onExploreCollection, onNewArrivals }: HeroProps) {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </motion.button>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={onNewArrivals}
-              className="border border-white/20 text-white px-8 py-4 rounded-full font-medium hover:bg-white/10 transition-all"
-            >
-              New Arrivals
-            </motion.button>
+            <MessengerButton
+              href={heroMessengerLink}
+              label="Consultar al Messenger"
+              className="px-8 py-4"
+            />
           </motion.div>
 
           {/* Stats */}

@@ -19,9 +19,7 @@ export default function App() {
     label: section.title,
   }));
 
-  const [expandedSections, setExpandedSections] = useState<string[]>(() =>
-    navCategories.slice(0, 2).map((section) => section.id)
-  );
+  const [expandedSections, setExpandedSections] = useState<string[]>([]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -102,7 +100,6 @@ export default function App() {
                 featuredProducts={featuredProducts}
                 onViewDetails={handleViewDetails}
                 onExploreCollection={handleExploreCollection}
-                onNewArrivals={() => handleCategorySelect(firstSectionId ?? '')}
                 expandedSections={expandedSections}
                 onSectionsChange={setExpandedSections}
               />

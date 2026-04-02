@@ -4,6 +4,9 @@ import { motion } from 'motion/react';
 import { ArrowLeft, ZoomIn, ChevronDown, RotateCcw } from 'lucide-react';
 import { findProductBySlug } from '../data/catalogView';
 import { formatCurrency } from '../utils/currency';
+import { ImageLightbox } from '../components/ImageLightbox';
+import { buildMessengerUrlForProduct } from '../utils/messenger';
+import { MessengerButton } from '../components/MessengerButton';
 
 export function ProductPage() {
   const { slug } = useParams();
@@ -13,6 +16,8 @@ export function ProductPage() {
   const [zoomLevel, setZoomLevel] = useState(1);
   const [transformOrigin, setTransformOrigin] = useState('center');
   const [infoOpen, setInfoOpen] = useState(true);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
   const zoomBounds = { min: 1, max: 2.5 };
 
   const clampZoom = (value: number) => Math.min(zoomBounds.max, Math.max(zoomBounds.min, value));
@@ -36,17 +41,17 @@ export function ProductPage() {
     setTransformOrigin(`${x}% ${y}%`);
   };
 
-  const handleImageClick = () => {
-    setZoomLevel((prev) => (prev > 1 ? 1 : 1.5));
-  };
-
   const images = useMemo(() => {
     if (!product) return [];
     if (product.images && product.images.length > 0) return product.images;
     return product.image ? [product.image] : [];
   }, [product]);
   const activeImage = images[selectedImage] ?? '';
-  const isZoomed = zoomLevel > 1.01;
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
 
   useEffect(() => {
     setSelectedImage(0);
@@ -70,6 +75,8 @@ export function ProductPage() {
       </section>
     );
   }
+
+  const messengerInquiry = buildMessengerUrlForProduct({ title: product.name, slug: product.slug });
 
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -97,9 +104,17 @@ export function ProductPage() {
               src={activeImage || ''}
               alt={`${product.name} vista ${selectedImage + 1}`}
               className="w-full h-full object-cover"
-              style={{ transformOrigin, cursor: isZoomed ? 'grab' : 'zoom-in' }}
-              onClick={handleImageClick}
+              style={{ transformOrigin, cursor: 'pointer' }}
+              onClick={() => openLightbox(selectedImage)}
             />
+
+            <button
+              type="button"
+              onClick={() => openLightbox(selectedImage)}
+              className="absolute top-4 right-4 rounded-full bg-white/10 border border-white/20 px-4 py-2 text-sm font-medium text-white/90 hover:bg-white/20 transition-colors"
+            >
+              Ver en pantalla completa
+            </button>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
@@ -138,6 +153,7 @@ export function ProductPage() {
                     setSelectedImage(index);
                     resetZoom();
                   }}
+                  onDoubleClick={() => openLightbox(index)}
                   className={`aspect-square rounded-2xl overflow-hidden border-2 transition-all ${
                     selectedImage === index ? 'border-white' : 'border-white/20 opacity-70'
                   }`}
@@ -161,6 +177,14 @@ export function ProductPage() {
             {product.oldPrice && (
               <span className="text-2xl text-rose-400 line-through">{formatCurrency(product.oldPrice)}</span>
             )}
+          </div>
+
+          <div className="mb-6">
+            <MessengerButton
+              href={messengerInquiry.href}
+              label="Consultar al Messenger"
+              className="hidden md:inline-flex"
+            />
           </div>
 
           {product.detail && (
@@ -188,7 +212,7 @@ export function ProductPage() {
               className="overflow-hidden px-5 pb-5"
             >
               {infoOpen && (
-                <div>
+                <div className="space-y-4">
                   <p className="text-gray-300 leading-relaxed whitespace-pre-line">
                     {product.description ||
                       'Explora cada detalle del producto, revisa la galería fotográfica y encuentra la información clave para tomar la mejor decisión.'}
@@ -213,6 +237,21 @@ export function ProductPage() {
             </div>
           </div>
         </div>
+      </div>
+
+      <ImageLightbox
+        images={images}
+        initialIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+      />
+
+      <div className="fixed inset-x-4 bottom-4 z-40 md:hidden">
+        <MessengerButton
+          href={messengerInquiry.href}
+          label="Consultar al Messenger"
+          className="w-full py-3.5"
+        />
       </div>
     </section>
   );

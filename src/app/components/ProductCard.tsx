@@ -2,6 +2,8 @@ import { motion } from 'motion/react';
 import { Eye } from 'lucide-react';
 import { useState } from 'react';
 import { formatCurrency } from '../utils/currency';
+import { buildMessengerUrlForProduct } from '../utils/messenger';
+import { MessengerButton } from './MessengerButton';
 
 export interface Product {
   id: number;
@@ -25,16 +27,23 @@ interface ProductCardProps {
 
 export function ProductCard({ product, onViewDetails }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const messengerInquiry = buildMessengerUrlForProduct({ title: product.name, slug: product.slug });
+
+  const handleCardClick = () => {
+    window.open(messengerInquiry.href, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -6, scale: 1.01 }}
+      transition={{ type: 'spring', stiffness: 220, damping: 20 }}
       viewport={{ once: true }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      onClick={() => onViewDetails(product)}
-      className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden cursor-pointer"
+      onClick={handleCardClick}
+      className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden cursor-pointer shadow-[0_8px_24px_rgba(15,23,42,0.25)] hover:shadow-[0_18px_44px_rgba(88,28,135,0.35)] transition-shadow duration-300"
     >
       {/* Image Container */}
       <div className="relative aspect-square overflow-hidden bg-gray-900">
@@ -96,6 +105,14 @@ export function ProductCard({ product, onViewDetails }: ProductCardProps) {
               {formatCurrency(product.oldPrice)}
             </span>
           )}
+        </div>
+        <div className="pt-2">
+          <MessengerButton
+            href={messengerInquiry.href}
+            label="Consultar al Messenger"
+            className="w-full text-sm px-4 py-2.5"
+            onClick={(event) => event.stopPropagation()}
+          />
         </div>
       </div>
 

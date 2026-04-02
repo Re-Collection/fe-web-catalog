@@ -1,3 +1,9 @@
 @import './fonts.css';
 @import './tailwind.css';
 @import './theme.css';
+
+:root.lightbox-open nav[data-nav-root],
+body.lightbox-open nav[data-nav-root] {
+	opacity: 0 !important;
+	pointer-events: none !important;
+}
