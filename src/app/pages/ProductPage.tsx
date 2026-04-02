@@ -54,6 +54,7 @@ export function ProductPage() {
   };
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     setSelectedImage(0);
     setZoomLevel(1);
     setTransformOrigin('center');
