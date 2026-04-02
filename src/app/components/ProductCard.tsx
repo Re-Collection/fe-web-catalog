@@ -30,7 +30,7 @@ export function ProductCard({ product, onViewDetails }: ProductCardProps) {
   const messengerInquiry = buildMessengerUrlForProduct({ title: product.name, slug: product.slug });
 
   const handleCardClick = () => {
-    window.open(messengerInquiry.href, '_blank', 'noopener,noreferrer');
+    onViewDetails(product);
   };
 
   return (
