@@ -2,8 +2,26 @@ import manualCatalogOverrides from './manualCatalogOverrides';
 
 const imageModules = import.meta.glob<string>(
   '/src/assets/Productos/**/*.{jpg,jpeg,png,webp}',
-  { eager: true, import: 'default' }
+  { import: 'default' }
 );
+
+const imageUrlCache = new Map<string, Promise<string>>();
+
+export const resolveCatalogImage = (imagePath: string) => {
+  const loader = imageModules[imagePath];
+  if (!loader) {
+    return Promise.resolve(imagePath);
+  }
+
+  if (!imageUrlCache.has(imagePath)) {
+    imageUrlCache.set(
+      imagePath,
+      loader().then((src) => src as string)
+    );
+  }
+
+  return imageUrlCache.get(imagePath)!;
+};
 
 export interface CatalogProduct {
   nombre: string;
@@ -49,16 +67,44 @@ const toTitleCase = (value: string) =>
     txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase()
   );
 
+const applyWordCase = (original: string, replacement: string) => {
+  if (!original) return replacement;
+  if (original === original.toUpperCase()) return replacement.toUpperCase();
+  if (original[0] === original[0].toUpperCase()) {
+    return replacement.charAt(0).toUpperCase() + replacement.slice(1);
+  }
+  return replacement;
+};
+
+const irregularSingularMap: Record<string, string> = {
+  cargadores: 'cargador',
+  encendedores: 'encendedor',
+  pantalones: 'pantalon',
+  lentes: 'lente',
+};
+
 const singularizeWord = (word: string) => {
   if (!word) return word;
+  const lower = word.toLowerCase();
+
+  if (irregularSingularMap[lower]) {
+    return applyWordCase(word, irregularSingularMap[lower]);
+  }
+
   if (/ces$/i.test(word)) {
     return word.replace(/ces$/i, 'z');
   }
-  if (/([aeiou])s$/i.test(word)) {
+  if (/ores$/i.test(word)) {
+    return word.replace(/ores$/i, 'or');
+  }
+  if (/([b-df-hj-np-tv-z])es$/i.test(word)) {
+    return word.replace(/es$/i, '');
+  }
+  if (/([aeiou])s$/i.test(word) && !/(?:[aeiou])es$/i.test(word)) {
     return word.replace(/s$/i, '');
   }
   if (/es$/i.test(word)) {
-    return word.replace(/es$/i, '');
+    return word.replace(/es$/i, 'e');
   }
   return word;
 };
@@ -87,7 +133,7 @@ const orderFromFileName = (fileName: string) => {
 
 const productMap = new Map<string, ProductAccumulator>();
 
-Object.entries(imageModules).forEach(([fullPath, src]) => {
+Object.keys(imageModules).forEach((fullPath) => {
   const normalizedPath = fullPath.replace(/\\/g, '/');
   const relative = normalizedPath.split('/src/assets/Productos/')[1];
   if (!relative) return;
@@ -130,7 +176,7 @@ Object.entries(imageModules).forEach(([fullPath, src]) => {
   }
 
   const accumulator = productMap.get(folderKey)!;
-  accumulator.imagenes.push({ src: src as string, order: orderFromFileName(fileName) });
+  accumulator.imagenes.push({ src: normalizedPath, order: orderFromFileName(fileName) });
 });
 
 const categoriesMap = new Map<string, CatalogCategory>();

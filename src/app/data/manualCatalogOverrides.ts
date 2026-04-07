@@ -68,8 +68,7 @@ const manualCatalogOverrides: ManualCatalogOverride[] = [
 
 ━━━━━━━━━━━━━━━━━━━
 
-⚠️ DETALLE:
-Solo funciona uno de los auriculares`,
+⚠️ DETALLE:`,
     detalle: "Se entrega aolo los audifonos.",
   },
   {
@@ -115,8 +114,8 @@ Solo funciona uno de los auriculares`,
     folderKey: "_Tecnologia/Brazaletes Led/Modelo 1",
     categoria: "Tecnologia",
     nombre: "Brazaletes Led Modelo 1",
-    precio: 227,
-    precioViejo: 267.86,
+    precio: 25,
+    precioViejo: 35,
     descripcion:
       "Descubre Brazaletes Led Modelo 1 dentro de la categoría Tecnologia.",
     detalle: "",
@@ -125,13 +124,13 @@ Solo funciona uno de los auriculares`,
     folderKey: "_Tecnologia/Brazaletes Led/Modelo 2",
     categoria: "Tecnologia",
     nombre: "Brazaletes Led Modelo 2",
-    precio: 228,
-    precioViejo: 269.04,
+    precio: 25,
+    precioViejo: 35,
     descripcion:
       "Descubre Brazaletes Led Modelo 2 dentro de la categoría Tecnologia.",
     detalle: "",
   },
-  {
+  {// TODO - Ver todos los cables Apple y contrastar con los de las fotos || PopSocket || Lentes Plegables
     folderKey: "_Tecnologia/Cables/Apple",
     categoria: "Tecnologia",
     nombre: "Cable Apple",
@@ -144,19 +143,18 @@ Solo funciona uno de los auriculares`,
     folderKey: "_Tecnologia/Cables/HDMI",
     categoria: "Tecnologia",
     nombre: "Cable Hdmi",
-    precio: 329,
-    precioViejo: 388.22,
+    precio: 22,
+    precioViejo: 35,
     descripcion: "Descubre Cable Hdmi dentro de la categoría Tecnologia.",
     detalle: "",
   },
   {
     folderKey: "_Tecnologia/Cargadores/Samsung",
     categoria: "Tecnologia",
-    nombre: "Cargadore Samsung",
-    precio: 150,
-    precioViejo: 177,
+    nombre: "Cargador Samsung",
+    precio: 25,
     descripcion:
-      "Descubre Cargadore Samsung dentro de la categoría Tecnologia.",
+      "Descubre Cargador Samsung dentro de la categoría Tecnologia.",
     detalle: "",
   },
   {
@@ -334,7 +332,7 @@ Condición: Excelente estado, color negro intenso y tejido muy bien conservado.`
   {
     folderKey: "_Accesorios/Encendedores/Pistola",
     categoria: "Accesorios",
-    nombre: "Encendedore Pistola",
+    nombre: "Encendedor Pistola",
     precio: 10.0,
     precioViejo: 25.0,
     descripcion:
@@ -452,7 +450,7 @@ Corte Moderno: Estilo Beanie con doblez ajustable para un calce perfecto.
   {
     folderKey: "_Ropa/Gorros/Yumo_Wait",
     categoria: "Ropa",
-    nombre: "Gorro Beanie Uniqlo Original - Con Lana (Traído de EE. UU.)",
+    nombre: "Gorro Beanie Yumo Wait Original - Con Lana (Traído de EE. UU.)",
     precio: 59,
     precioViejo: 85,
     descripcion: `🌟 CALIDAD Y MATERIALES PREMIUM
@@ -467,7 +465,7 @@ Textura Suave: Punto grueso y esponjoso que se siente muy cómodo y no pica.
 
 ⚙️ DISEÑO Y AJUSTE
 
-Producto Original: Traído directamente de Estados Unidos, fabricado bajo los estándares de calidad de Uniqlo Indonesia.
+Producto Original: Traído directamente de Estados Unidos, fabricado bajo los estándares de calidad de Yumo Wait.
 
 Talla Única (One Size): Elástico y versátil, se adapta perfectamente a cualquier tamaño de cabeza.
 
@@ -747,10 +745,23 @@ Estética: Color gris profesional con detalles en rojo.`,
     folderKey: "_Deportes/Mochilas/VOL",
     categoria: "Deportes",
     nombre:
-      "Título: Mochila VOL Voltage - Expandible (Gimnasio / Viaje / Laptop)",
+      "Mochila VOL Voltage - Expandible (Gimnasio / Viaje / Laptop)",
     precio: 99,
     precioViejo: 110,
-    descripcion: "Descubre Mochila Vol dentro de la categoría Deportes.",
+    descripcion: `🎒 Mochila VOL Azul: ¡Expansión Inteligente para tus Aventuras! 🔥
+¿Necesitas una mochila que se adapte a tus necesidades cambiantes? ¡La mochila VOL azul es tu aliada perfecta! Con su diseño innovador y materiales resistentes, está lista para acompañarte al gimnasio 🏋️‍♂️, a la oficina 🏢 o a tu próxima escapada de fin de semana.
+
+¿Por qué te va a encantar? 🤔
+
+📏 Expansión Inteligente: ¡Lo mejor es que esta mochila se puede expandir hacia abajo! Con unas medidas originales de 50 x 40 x 18 cm, puedes aumentar su capacidad a 57 cm de altura con solo deslizar un cierre. ¡Así tendrás espacio para todo lo que necesitas!
+
+💪 Robusta y Resistente: Construida para durar y resistir el uso intenso.
+
+Organización Total: Cuenta con un gran compartimento principal, compartimentos secundarios para tu laptop 💻, y prácticos bolsillos laterales de malla.
+
+Comodidad Superior: Panel trasero acolchado y correas ajustables para una comodidad duradera.
+
+Marca VOL: Calidad y estilo en cada detalle.`,
     detalle: "",
   },
   {
@@ -1345,7 +1356,22 @@ CARACTERÍSTICAS TÉCNICAS:
     nombre: "Webcams Halion",
     precio: 15,
     precioViejo: 30,
-    descripcion: "Descubre Webcams Halion dentro de la categoría Tecnologia.",
+    descripcion: `📷 Webcam HALION – Conexión Dual para Video y Audio 💻
+Esta webcam de la marca Halion es una solución práctica y directa para tus videollamadas, clases virtuales o conferencias. Su diseño compacto y sistema de ajuste manual la hacen muy versátil para cualquier monitor o escritorio.
+
+Características principales: 🤔
+
+🔌 Conectividad Dual: Cuenta con dos conectores independientes: un puerto USB para la transmisión de video y energía, y un conector de 3.5mm (Plug) para el audio.
+
+💡 Iluminación Integrada (1 Flash LED): El frontal de la cámara incluye un punto de luz LED activo que ayuda a mejorar la iluminación de tu rostro en ambientes oscuros. (El segundo orificio frontal es un elemento de diseño decorativo).
+
+🎯 Enfoque Manual: Posee un anillo estriado alrededor del lente que permite ajustar el enfoque manualmente para obtener la mayor nitidez según la distancia.
+
+🎤 Micrófono Incorporado: Se observa un pequeño orificio en la parte frontal inferior, diseñado para capturar la voz sin necesidad de micrófonos externos adicionales.
+
+📐 Base Ajustable: La cámara está montada sobre una base con la marca HALION que funciona como clip para sujetarla a la parte superior de pantallas de laptops o monitores, y también permite apoyarla sobre superficies planas.
+
+🔄 Cabezal Articulado: El diseño permite girar e inclinar la cámara para encontrar el ángulo perfecto de visión.`,
     detalle: "",
   },
   {

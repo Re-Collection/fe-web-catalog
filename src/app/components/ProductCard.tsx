@@ -1,9 +1,10 @@
 import { motion } from 'motion/react';
 import { Eye } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { formatCurrency } from '../utils/currency';
 import { buildMessengerUrlForProduct } from '../utils/messenger';
 import { MessengerButton } from './MessengerButton';
+import { resolveCatalogImage } from '../data/catalog';
 
 export interface Product {
   id: number;
@@ -27,7 +28,21 @@ interface ProductCardProps {
 
 export function ProductCard({ product, onViewDetails }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [imageSrc, setImageSrc] = useState('');
   const messengerInquiry = buildMessengerUrlForProduct({ title: product.name, slug: product.slug });
+
+  useEffect(() => {
+    let active = true;
+    resolveCatalogImage(product.image).then((resolvedSrc) => {
+      if (active) {
+        setImageSrc(resolvedSrc);
+      }
+    });
+
+    return () => {
+      active = false;
+    };
+  }, [product.image]);
 
   const handleCardClick = () => {
     onViewDetails(product);
@@ -48,7 +63,7 @@ export function ProductCard({ product, onViewDetails }: ProductCardProps) {
       {/* Image Container */}
       <div className="relative aspect-square overflow-hidden bg-gray-900">
         <motion.img
-          src={product.image}
+          src={imageSrc}
           alt={product.name}
           className="w-full h-full object-cover"
           loading="lazy"

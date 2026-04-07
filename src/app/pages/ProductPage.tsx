@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowLeft, ZoomIn, ChevronDown, RotateCcw } from 'lucide-react';
 import { findProductBySlug } from '../data/catalogView';
+import { resolveCatalogImage } from '../data/catalog';
 import { formatCurrency } from '../utils/currency';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { buildMessengerUrlForProduct } from '../utils/messenger';
@@ -18,6 +19,7 @@ export function ProductPage() {
   const [infoOpen, setInfoOpen] = useState(true);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [resolvedImages, setResolvedImages] = useState<string[]>([]);
   const zoomBounds = { min: 1, max: 2.5 };
 
   const clampZoom = (value: number) => Math.min(zoomBounds.max, Math.max(zoomBounds.min, value));
@@ -46,7 +48,7 @@ export function ProductPage() {
     if (product.images && product.images.length > 0) return product.images;
     return product.image ? [product.image] : [];
   }, [product]);
-  const activeImage = images[selectedImage] ?? '';
+  const activeImage = resolvedImages[selectedImage] ?? '';
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -59,6 +61,25 @@ export function ProductPage() {
     setZoomLevel(1);
     setTransformOrigin('center');
   }, [product?.slug]);
+
+  useEffect(() => {
+    let active = true;
+
+    if (!images.length) {
+      setResolvedImages([]);
+      return;
+    }
+
+    Promise.all(images.map((image) => resolveCatalogImage(image))).then((urls) => {
+      if (active) {
+        setResolvedImages(urls);
+      }
+    });
+
+    return () => {
+      active = false;
+    };
+  }, [images]);
 
   if (!product) {
     return (
@@ -145,9 +166,9 @@ export function ProductPage() {
             </div>
           </div>
 
-          {images.length > 1 && (
+          {resolvedImages.length > 1 && (
             <div className="grid grid-cols-3 gap-4">
-              {images.map((image, index) => (
+              {resolvedImages.map((image, index) => (
                 <button
                   key={image}
                   onClick={() => {
@@ -234,14 +255,14 @@ export function ProductPage() {
             </div>
             <div className="flex items-center justify-between">
               <span className="text-gray-400">Cantidad de fotos</span>
-              <span className="text-white">{images.length}</span>
+              <span className="text-white">{resolvedImages.length}</span>
             </div>
           </div>
         </div>
       </div>
 
       <ImageLightbox
-        images={images}
+        images={resolvedImages}
         initialIndex={lightboxIndex}
         isOpen={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
